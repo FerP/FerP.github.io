@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>FerP.GitHub.io by Fernando Peralta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" media="screen">
+	<script>
+	</script>
+</head>
+
+<body>
+  <div class="navbar-fixed">
+    <nav class="teal">
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">validationF.js</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#howto">How to</a></li>
+          <li><a href="#demo">Demo</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  
+  	<div class="row card-panel" id="howto">
+		<div class="col s12 ">
+			Next sections show how to use the validationF.js plugin, just another validation form.
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col s12"><h2 >How to use the plugin</h2></div>
+	</div>
+
+
+
+	<div class="row card-panel">
+		<div class="col s6 ">
+			<ul>
+				<li><h3>Validating a form on client-side</h3>
+					<ul>
+						<li>You can do e-mail check.</li>
+						<li>You can do number check.</li>
+						<li>You can do date check with format dd-mm-yyyy.</li>
+						<li>You can do text check.</li>
+						<li>You can do password check.</li>
+						<li>You can do phone check with format 999-999-999.</li>
+					</ul>
+					
+				</li>
+				<li><h3>Flexible validation</h3>
+					<ul>
+						<li>You can limit number of characters written to fields.</li>
+						<li>By creating your own regular expression, you can check fields according to this regular expression.</li>
+					</ul>
+					
+				</li>
+				<li><h3>Browser support</h3>
+					<ul>
+						<li>The project is tested in Chrome and Firefox. It should work in the current stable releases of Chrome, Firefox, Safari as well as IE8 and up.</li>
+</li>
+					</ul>
+			</ul>
+		</div>
+		<div class="col s6">
+		<pre class="pre">
+&ltform id="form"&gt
+    &ltp&gt&ltlabel&gtName &ltspan&gt*&lt/span&gt:&lt/label&gt&ltinput type="text" class="required texto"/&gt&lt/p&gt
+    &ltp&gt&ltlabel&gtPassword &ltspan&gt*&lt/span&gt:&lt/label&gt&ltinput type="password" class="required password"/&gt&lt/p&gt
+	&ltp&gt&ltlabel&gtDate:&lt/label&gt&ltinput type="text" class="date" placeholder="dd-mm-yyyy"/&gt&lt/p&gt
+	&ltp&gt&ltlabel&gtYear:&lt/label&gt&ltinput type="text" class="number"/&gt&lt/p&gt
+    &ltp&gt&ltlabel&gtE-Mail:&lt/label&gt&ltinput type="text" class="email"/&gt&lt/p&gt
+    &ltp&gt&ltlabel&gtPhone:&lt/label&gt&ltinput type="text" class="phone" placeholder="999-999-999"/&gt&lt/p&gt
+    &ltp&gt&ltlabel&gt&nbsp;&lt/label&gt&ltbutton type="submit"&gtSubmit&lt/button&gt&lt/p&gt
+&lt/form&gt
+		</pre>
+
+
+		</div>
+     
+
+		<div class="col s6 ">
+				<ul>			<ul>
+
+				<li><h3>Mandatory jQuery</h3>
+					<ul>
+						<li>It works fine for 1.9+</li>
+					</ul>
+				</li>
+				<li><h3>Plugin call</h3>
+					<ul>
+						<li>At the very bottom of the body</li>
+					</ul></li>
+			</ul>
+		</div>
+		<div class="col s6">
+		<pre class="pre">
+
+&ltscript src="stylesheets/estilos.css"&gt
+
+
+
+&ltscript src="js/jquery.min.js"&gt&lt/script&gt
+
+
+
+&ltscript src="js/validationF.js"&gt&lt/script&gt
+
+
+
+$("#form").validationF();
+		</pre>
+
+
+		</div>
+
+
+
+	</div>
+
+	<div class="row ">
+		<div class="col s12">
+	</div>
+
+	<div class="row" id="demo">
+		<div class="col s12"><h2 >Demo: See it in action</h2></div>
+	</div>
+
+	<div class="row card-panel">
+		<div class="col s6 ">
+		<form id="form">
+    <p><label>Name <span>*</span>:</label><input type="text" class="required texto"/></p>
+    <p><label>Password <span>*</span>:</label><input type="password" class="required password"/></p>
+	<p><label>Date:</label><input type="text" class="date" placeholder="dd-mm-yyyy"/></p>
+	<p><label>Year:</label><input type="text" class="number"/></p>
+    <p><label>E-Mail:</label><input type="text" class="email"/></p>
+    <p><label>Phone:</label><input type="text" class="phone" placeholder="999-999-999"/></p>
+    <p><label>&nbsp;</label><button type="submit">Submit</button></p>
+</form>	
+	</div>
+	</div>
+     
+        <footer class="page-footer teal">
+ 
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Fernando Peralta Aramendia
+            <a class="grey-text text-lighten-4 right" href="https://github.com/FerP/validationF">See it in GitHub</a>
+            </div>
+          </div>
+        </footer>
+            
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="js/validationF.js"></script>`
+      <script>
+$(document).ready(function () {
+    $('#form').validationF();
+});
+    </script>
+  </body>
+</html>
