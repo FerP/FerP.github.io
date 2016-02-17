@@ -21,14 +21,14 @@
         var $form = this;
  
         // Only we consider input of type text and password
-        var $input = $form.find('input:text, input:password', );
+        var $input = $form.find('input:text, input:password');
      
 	 //The regular expressions to validation the information we obtain them of several sources between them: 
 	 //http://www.w3schools.com/js/js_regexp.asp    
 	 //http://web.ontuts.com/snippets/10-expresiones-regulares-imprescindibles-en-desarrollo-web/
 	 
     var filtros = {
-    text : {
+    texto : {
         regex : /^[A-Za-z]{2,}$/,
         error : 'Minimum two characters and alone letters'
     },
@@ -96,23 +96,23 @@ var validation = function (clase, valor) {
     }
 };
 
-var showError = function($input) {
+var muestraError = function($input) {
     // To initialize variables
     var clase = $input.attr('class');
     var valor = $input.val();
  
-        // Called the function validation and he returns the values in variable test
+        // Called the function validationted and he returns the values in variable test
     var test = validation(clase, valor);
  
         // We believe a label span for print screen the error
     var $error = $('<span class="error">' + test.error + '</span>');
           
     // Delete error referenced by the input that has class invalid
-    $input.removeClass('invalidate').siblings('.error').remove();
+    $input.removeClass('notvalid').siblings('.error').remove();
      
     // If the field is incorrect add the class invalid
     if (!test.isValid) {
-        $input.addClass('invalidate');
+        $input.addClass('notvalid');
 		$error.add($error).insertAfter($input);
         // We add the error
         $error.insertAfter($input);
@@ -122,23 +122,23 @@ var showError = function($input) {
 //We cross every input that is obligatory with the class .required and we show the error in case it is
 $input.each(function() {
     if ($(this).is('.required')) {
-        showError($(this));
+        muestraError($(this));
     }
 });
  
 // It checks if there is a error whenever we write and  shows it across the class icon
 $input.keyup(function() {
-    showError($(this));
+    muestraError($(this));
 });
  
 // Before sending the data we check that all the inputs are correct
 $form.submit(function(e) {
-    if ($form.find('input.invalidate').length) {
+    if ($form.find('input.notvalid').length) {
         
 		// If there is some invalid input we anticipate that the form  send data with the preventDefault and we send an alert
 		// warning that the form is not valid
 		e.preventDefault();
-        alert('The form is not validate');
+        alert('The form is not valid');
     }
 });
          
