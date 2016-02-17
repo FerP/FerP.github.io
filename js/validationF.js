@@ -8,7 +8,7 @@
 	*
 	* @requires jQuery v1.9 or above
 	* @version 1.0.0
-	* @cat Plugins/Form validationtion
+	* @cat Plugins/Form validation
 	* @author Fernando Peralta Aramendia (fpearam@gmail.com)
 	* @see https://github.com/...
 	*/
@@ -21,14 +21,14 @@
         var $form = this;
  
         // Only we consider input of type text and password
-        var $input = $form.find('input:text, input:password');
+        var $input = $form.find('input:text, input:password', );
      
-	 //The regular expressions to validationte the information we obtain them of several sources between them: 
+	 //The regular expressions to validation the information we obtain them of several sources between them: 
 	 //http://www.w3schools.com/js/js_regexp.asp    
 	 //http://web.ontuts.com/snippets/10-expresiones-regulares-imprescindibles-en-desarrollo-web/
 	 
     var filtros = {
-    texto : {
+    text : {
         regex : /^[A-Za-z]{2,}$/,
         error : 'Minimum two characters and alone letters'
     },
@@ -57,13 +57,13 @@
 var validation = function (clase, valor) {
      
     // To initialize variables
-    var esValido = true;
+    var isValid = true;
     var    error = '';
          
     // If the field is empty and class is required
 
     if (!valor && /required/.test(clase)) {
-        esValido = false;
+        isValid = false;
          
     // If the field is not empty    
     } else {
@@ -81,7 +81,7 @@ var validation = function (clase, valor) {
 				//the message error in the field error
                 if (valor && !filtros[f].regex.test(valor)) {
                     error = filtros[f].error;
-                    esValido = false;
+                    isValid = false;
                 }
                 // We end when the regular expression of the filter is correct
                 break;
@@ -89,30 +89,30 @@ var validation = function (clase, valor) {
         }
     }
      
-    // We return the results of the validationtion
+    // We return the results of the validation
     return {
-        esValido : esValido,
+        isValid : isValid,
         error : error
     }
 };
 
-var muestraError = function($input) {
+var showError = function($input) {
     // To initialize variables
     var clase = $input.attr('class');
     var valor = $input.val();
  
-        // Called the function validationted and he returns the values in variable test
+        // Called the function validation and he returns the values in variable test
     var test = validation(clase, valor);
  
         // We believe a label span for print screen the error
     var $error = $('<span class="error">' + test.error + '</span>');
           
-    // Delete error referended by the input that has class invalid
-    $input.removeClass('invalido').siblings('.error').remove();
+    // Delete error referenced by the input that has class invalid
+    $input.removeClass('invalidate').siblings('.error').remove();
      
     // If the field is incorrect add the class invalid
-    if (!test.esValido) {
-        $input.addClass('invalido');
+    if (!test.isValid) {
+        $input.addClass('invalidate');
 		$error.add($error).insertAfter($input);
         // We add the error
         $error.insertAfter($input);
@@ -122,23 +122,23 @@ var muestraError = function($input) {
 //We cross every input that is obligatory with the class .required and we show the error in case it is
 $input.each(function() {
     if ($(this).is('.required')) {
-        muestraError($(this));
+        showError($(this));
     }
 });
  
 // It checks if there is a error whenever we write and  shows it across the class icon
 $input.keyup(function() {
-    muestraError($(this));
+    showError($(this));
 });
  
 // Before sending the data we check that all the inputs are correct
 $form.submit(function(e) {
-    if ($form.find('input.invalido').length) {
+    if ($form.find('input.invalidate').length) {
         
 		// If there is some invalid input we anticipate that the form  send data with the preventDefault and we send an alert
 		// warning that the form is not valid
 		e.preventDefault();
-        alert('El form no es valido');
+        alert('The form is not validate');
     }
 });
          
